@@ -1,0 +1,161 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Settings Page</title>
+  <link rel="stylesheet" href="{% static 'assets/css/main.min.css' %}">
+  
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .page-wrapper {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 20px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      text-align: center;
+    }
+    .card-title {
+      margin: 0;
+      font-size: 1.5em;
+    }
+    .tab-pane {
+      padding: 20px;
+      border-radius: 10px;
+      animation: fadeIn 0.5s;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      transition: background-color 0.3s, border-color 0.3s;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+    .app-footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="main-container">
+      <div class="page-header d-flex justify-content-between align-items-center">
+        <!-- Header actions ccontainer start -->
+        <div class="header-actions-container">
+
+          <!-- Header actions start -->
+          <ul class="header-actions">
+            <li class="dropdown d-none d-md-block">
+              <a href="#" id="countries" data-toggle="dropdown" aria-haspopup="true">
+                <img src="{% static 'assets/images/flags/1x1/br.svg' %}" class="flag-img" alt="Admin Panels" />
+              </a>
+              <div class="dropdown-menu dropdown-menu-end mini" aria-labelledby="countries">
+                <div class="dropdown-menu dropdown-menu-end mini" aria-labelledby="countries">
+                <div class="country-container">
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/us.svg' %}" alt="Clean Admin Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/in.svg' %}" alt="Google Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/gb.svg' %}" alt="AI Admin Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/tr.svg' %}" alt="Modern Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/ca.svg' %}" alt="Best Admin Dashboards" />
+                  </a>
+                </div>
+            </li>
+            <li class="dropdown">
+              <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                <span class="user-name d-none d-md-block">{{user.first_name}}</span>
+                <span class="avatar">
+                  <img src="{% static 'assets/images/user.png' %}" alt="Admin Templates">
+                  <span class="status online"></span>
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+                <div class="header-profile-actions">
+                  <a href="{% url 'modify_password' %}">Modifier votre mot de passe</a>
+                  <a href="{% url 'logout' %}">Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- Header actions end -->
+
+        </div>
+      </div>
+      <div class="content-wrapper">
+        <div class="row">
+          <!-- Content -->
+          <div class="col-md-12">
+            <div class="tab-content" id="settingsTabsContent">
+              <div class="tab-pane fade show active" id="change-password" role="tabpanel" aria-labelledby="change-password-tab">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Modifier votre mot de passe</h4>
+                    <p>Contenu de la page de modification du mot de passe.</p>
+                    <div class="d-flex justify-content-center">
+                      <a href="{% url 'modify_password' %}" class="btn btn-primary mt-4">Aller à la page de modification du mot de passe</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="app-footer">
+        <span>© Your Company 2024</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

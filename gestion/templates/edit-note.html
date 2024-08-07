@@ -1,0 +1,296 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.bootstrapget.com/demos/templatemonster/arise-admin-dashboard/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Mar 2024 10:18:21 GMT -->
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Meta -->
+  <meta name="description" content="Best MISUKLU">
+  <meta name="author" content="Bootstrap Gallery" />
+  <link rel="canonical" href="https://www.bootstrap.gallery/">
+  <meta property="og:url" content="https://www.bootstrap.gallery/">
+  <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+  <meta property="og:description" content="Marketplace for MISUKLU">
+  <meta property="og:type" content="Website">
+  <meta property="og:site_name" content="Bootstrap Gallery">
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.svg' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Title -->
+  <title>Dashboard-Création de note</title>
+
+  <!-- *************
+			************ Common Css Files *************
+		************ -->
+  <!-- Animated css -->
+  <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+  <!-- Bootstrap font icons css -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap/bootstrap-icons.css' %}">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="{% static 'assets/css/main.min.css' %}">
+
+
+  <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+  <!-- Scrollbar CSS -->
+  <link rel="stylesheet" href="{% static 'assets/vendor/overlay-scroll/OverlayScrollbars.min.css' %}">
+
+  <!-- Date Range CSS -->
+  <link rel="stylesheet" href="{% static 'assets/vendor/daterange/daterange.css' %}">
+
+</head>
+
+<body>
+
+  <!-- Loading wrapper start -->
+  <!-- <div id="loading-wrapper">
+			<div class="spinner">
+                <div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+				<div class="line4"></div>
+				<div class="line5"></div>
+				<div class="line6"></div>
+            </div>
+		</div> -->
+  <!-- Loading wrapper end -->
+
+  <!-- Page wrapper start -->
+  <div class="page-wrapper">
+
+    <!-- Sidebar wrapper start -->
+    <nav class="sidebar-wrapper">
+
+      <!-- Sidebar brand starts -->
+      <div class="sidebar-brand">
+        <a href="{%url 'dashboards-professeur' %}" class="logo">
+          <img src="{% static 'assets/images/logo.svg' %}" alt="Admin Dashboards" />
+        </a>
+      </div>
+      <!-- Sidebar brand starts -->
+
+      <!-- Sidebar menu starts -->
+      <div class="sidebar-menu">
+        <div class="sidebarMenuScroll">
+          <ul>
+            <li class="active-page-link">
+              <a href="{%url 'dashboards-professeur' %}">
+                <i class="bi bi-house"></i>
+                <span class="menu-text">Home</span>
+              </a>
+            </li>
+            <li class="sidebar-dropdown">
+                <a href="#">
+                    <i class="bi bi-people"></i>
+                    <span class="menu-text">Classe</span>
+                </a>
+                <div class="sidebar-submenu">
+                    <ul>
+                        <li>
+                            <a href="{%url 'creation-note' %}">Ajout de note</a>
+                        </li>
+                        <li>
+                            <a href="{%url 'liste_note' %}">Liste des notes</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+              <a href="{%url 'dashboards-professeur' %}">
+                <i class="bi bi-calendar"></i>
+                <span class="menu-text">Calendrier</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Sidebar menu ends -->
+
+    </nav>
+    <!-- Sidebar wrapper end -->
+
+    <!-- *************
+				************ Main container start *************
+			************* -->
+    <div class="main-container">
+
+      <!-- Page header starts -->
+      <div class="page-header">
+
+        <!-- Toggle sidebar start -->
+        <div class="toggle-sidebar" id="toggle-sidebar"><i class="bi bi-list"></i></div>
+        <!-- Toggle sidebar end -->
+
+        <!-- Logo sm starts -->
+        <a href="{%url 'dashboards-professeur' %}" class="d-lg-none d-md-block">
+          <img src="{% static 'assets/images/logo.svg' %}" class="logo-sm" alt="Bootstrap Gallery">
+        </a>
+        <!-- Logo sm ends -->
+
+        <!-- Breadcrumb start -->
+        <ol class="breadcrumb d-lg-flex d-none">
+          <li class="breadcrumb-item">
+            <i class="bi bi-house"></i>
+            <a href="{%url 'dashboards-professeur' %}">Home</a>
+          </li>
+        </ol>
+        <!-- Breadcrumb end -->
+
+        <!-- Header actions ccontainer start -->
+        <div class="header-actions-container">
+
+          <!-- Header actions start -->
+          <ul class="header-actions">
+            <li class="dropdown">
+              <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                <span class="user-name d-none d-md-block">{{ user.username }}</span>
+                <span class="avatar">
+                    <i class="fas fa-user fa-2x"></i> <!-- Icône d'utilisateur -->
+                    <span class="status online"></span>
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+                <div class="header-profile-actions">
+                  <a href="{% url 'logout' %}">Logout</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- Header actions end -->
+
+        </div>
+        <!-- Header actions ccontainer end -->
+
+      </div>
+      <!-- Page header ends -->
+
+      <!-- Content wrapper scroll start -->
+      <div class="content-wrapper">
+
+        <!-- Content wrapper start -->
+        <div class="content">
+
+          <!-- Row start -->
+          <div class="row">
+            <div class="col-sm-12 col-12">
+
+              <div class="profile-header">
+                <h1>Welcome, {{user.username}}</h1>
+                <div class="profile-header-content">
+                  <div class="profile-header-tiles">
+                    <div class="row">
+                      <div class="col-sm-4 col-12">
+                        <div class="profile-tile">
+                          <span class="icon">
+                            <i class="bi bi-envelope-fill"></i>
+                          </span>
+                          <h6>Email - <span>{{user.username}}</span></h6>
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-12">
+                        <div class="profile-tile">
+                          <span class="icon">
+                            <i class="bi bi-person"></i>
+                          </span>
+                          <h6>Name - <span>{{user.first_name}}</span></h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="profile-avatar-tile">
+                    <img src="{% static 'assets/images/homme.png' %}" class="img-fluid" alt="Bootstrap Gallery" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- Row end -->
+
+
+
+          <!-- Row start -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Modifier la note</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="note" class="form-label">Note:</label>
+                    <input type="number" id="note" name="note" min="0" max="20" class="form-control" value="{{ note.note }}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+          <!-- Row end -->
+
+        </div>
+        <!-- Content wrapper end -->
+
+        <!-- App Footer start -->
+        <div class="app-footer">
+          <span>© Bootstrap Gallery 2024</span>
+        </div>
+        <!-- App footer end -->
+
+      </div>
+      <!-- Content wrapper scroll end -->
+
+    </div>
+    <!-- *************
+				************ Main container end *************
+			************* -->
+
+  </div>
+  <!-- Page wrapper end -->
+
+  <!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+  <!-- Required jQuery first, then Bootstrap Bundle JS -->
+  <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/modernizr.js' %}"></script>
+  <script src="{% static 'assets/js/moment.js' %}"></script>
+
+  <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+  <!-- Overlay Scroll JS -->
+  <script src="{% static 'assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/overlay-scroll/custom-scrollbar.js' %}"></script>
+
+  <!-- Rating JS -->
+  <script src="{% static 'assets/vendor/rating/raty.js' %}"></script>
+  <script src="{% static 'assets/vendor/rating/raty-custom.js' %}"></script>
+
+  <!-- Apex Charts -->
+  <script src="{% static 'assets/vendor/apex/apexcharts.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/apex/custom/profile/visitors.js' %}"></script>
+
+  <!-- Main Js Required -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from www.bootstrapget.com/demos/templatemonster/arise-admin-dashboard/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Mar 2024 10:18:25 GMT -->
+
+</html>

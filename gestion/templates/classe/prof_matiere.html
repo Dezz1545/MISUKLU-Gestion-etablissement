@@ -1,0 +1,532 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+  
+<!-- Mirrored from www.bootstrapget.com/demos/templatemonster/arise-admin-dashboard/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Mar 2024 10:19:05 GMT -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta -->
+    <meta name="description" content="Best MISUKLU">
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="canonical" href="https://www.bootstrap.gallery/">
+    <meta property="og:url" content="https://www.bootstrap.gallery/">
+    <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+    <meta property="og:description" content="Marketplace for MISUKLU">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="Bootstrap Gallery">
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.svg' %}">
+
+    <!-- Title -->
+    <title>MISUKLU</title>
+
+
+    <!-- *************
+			************ Common Css Files *************
+		************ -->
+    <!-- Animated css -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+  <!-- Bootstrap font icons css -->
+  <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap/bootstrap-icons.css' %}">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="{% static 'assets/css/main.min.css' %}">
+
+
+  <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+  <!-- Scrollbar CSS -->
+  <link rel="stylesheet" href="{% static 'assets/vendor/overlay-scroll/OverlayScrollbars.min.css' %}">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/dataTables.bs5.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/dataTables.bs5-custom.css' %}" />
+
+  </head>
+
+  <body>
+
+    <!-- Page wrapper start -->
+    <div class="page-wrapper">
+
+      <!-- Sidebar wrapper start -->
+      <nav class="sidebar-wrapper">
+
+        <!-- Sidebar brand starts -->
+        <div class="sidebar-brand">
+          <a href="index.html" class="logo">
+            <img src="{% static 'assets/images/logo.svg' %}" alt="Admin Dashboards" />
+          </a>
+        </div>
+        <!-- Sidebar brand starts -->
+
+        <!-- Sidebar menu starts -->
+        <div class="sidebar-menu">
+          <div class="sidebarMenuScroll">
+            <ul>
+                <li>
+                    <center>
+                        <ul>
+                            <li>{{classe.nom_classe}}</li>
+                            <li>{{classe.niveau_associée}}</li>
+                        </ul>
+                    </center>
+                </li>
+                <li>
+                    <a href="{% url 'dashboards-directeur-des-etudes' %}">
+                      <i class="bi bi-house"></i>
+                      <span class="menu-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'listclasse_etud' classe.id %}">
+                      <i class="bi bi-stickies"></i>
+                      <span class="menu-text">liste de classe</span>
+                    </a>
+                </li>
+                <li  class="active-page-link">
+                    <a href="{% url 'profmatiere' classe.id %}">
+                      <i class="bi bi-stickies"></i>
+                      <span class="menu-text">Prof et Matière</span>
+                    </a>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                    <i class="bi bi-collection"></i>
+                    <span class="menu-text">Notes</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                      <ul>
+                        {% for matiere_classe in matiere_classes %}
+                          <li>
+                            <a href="accordions.html">{{matiere_classe.matiere}}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                </li>
+                <li class="sidebar-dropdown">
+                    <a href="#">
+                    <i class="bi bi-calendar4"></i>
+                    <span class="menu-text">Calendrier</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                    <ul>
+                        <li>
+                        <a href="create-invoice.html">Ajouter tache</a>
+                        </li>
+                        <li>
+                        <a href="{% url 'cons_calendrier' classe.id %}">Consulter le Calendrier</a>
+                        </li>
+                    </ul>
+                    </div>
+                </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Sidebar menu ends -->
+
+      </nav>
+      <!-- Sidebar wrapper end -->
+
+      <!-- *************
+				************ Main container start *************
+			************* -->
+      <div class="main-container">
+
+        <!-- Page header starts -->
+        <div class="page-header">
+
+          <!-- Toggle sidebar start -->
+          <div class="toggle-sidebar" id="toggle-sidebar"><i class="bi bi-list"></i></div>
+          <!-- Toggle sidebar end -->
+
+          <!-- Logo sm starts -->
+          <a href="index.html" class="d-lg-none d-md-block">
+          <img src="{% static 'assets/images/logo.svg' %}" class="logo-sm" alt="Bootstrap Gallery">
+          </a>
+          <!-- Logo sm ends -->
+
+          <!-- Breadcrumb start -->
+          <ol class="breadcrumb d-lg-flex d-none">
+            <li class="breadcrumb-item">
+              <i class="bi bi-house"></i>
+              <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">{{classe.nom_classe}}</li>
+            <li class="breadcrumb-item breadcrumb-active" aria-current="page">Prof et Matière</li>
+          </ol>
+          <!-- Breadcrumb end -->
+
+          <!-- Header actions ccontainer start -->
+          <div class="header-actions-container">
+
+            <!-- Search container start -->
+            <div class="search-container d-lg-block d-none">
+
+              <!-- Search input group start -->
+              <div class="input-group">
+                <input type="text" class="form-control" id="searchAny" placeholder="Search anything">
+                <button class="btn" type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+              <!-- Search input group end -->
+
+            </div>
+            <!-- Search container end -->
+
+            <!-- Leads start -->
+            <a href="orders.html" class="leads d-none d-xl-flex">
+              <div class="lead-details">You have <span class="count"> 21 </span> new leads </div>
+              <span class="lead-icon"><i
+                  class="bi bi-bell-fill animate__animated animate__swing animate__infinite infinite"></i><b
+                  class="dot animate__animated animate__heartBeat animate__infinite"></b></span>
+            </a>
+            <!-- Leads end -->
+
+            <!-- Header actions start -->
+            <ul class="header-actions">
+              <li class="dropdown d-none d-md-block">
+                <a href="#" id="countries" data-toggle="dropdown" aria-haspopup="true">
+                <img src="{% static 'assets/images/flags/1x1/br.svg' %}" class="flag-img" alt="Admin Panels" />
+                </a>
+                <div class="dropdown-menu dropdown-menu-end mini" aria-labelledby="countries">
+                  <div class="country-container">
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/us.svg' %}" alt="Clean Admin Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/in.svg' %}" alt="Google Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/gb.svg' %}" alt="AI Admin Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/tr.svg' %}" alt="Modern Dashboards" />
+                  </a>
+                  <a href="index.html">
+                    <img src="{% static 'assets/images/flags/1x1/ca.svg' %}" alt="Best Admin Dashboards" />
+                  </a>
+                </div>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+                  <span class="user-name d-none d-md-block">{{user.first_name}}</span>
+                  <span class="avatar">
+                  <img src="{% static 'assets/images/user.png' %}" alt="Admin Templates">
+                    <span class="status online"></span>
+                  </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+                  <div class="header-profile-actions">
+                    <a href="profile.html">Profile</a>
+                    <a href="{% url 'settings' %}">Settings</a>
+                    <a href="login.html">Logout</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- Header actions end -->
+
+          </div>
+          <!-- Header actions ccontainer end -->
+
+        </div>
+        <!-- Page header ends -->
+
+        <!-- Content wrapper scroll start -->
+        <div class="content-wrapper-scroll">
+
+          <!-- Content wrapper start -->
+          <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row">
+              <div class="col-sm-12 col-12">
+              
+                <!-- Card start -->
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Liste Professeur</div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <form method="POST" id="myForm">
+                        {% csrf_token %}
+                        <table id="apiCallbacks" class="table custom-table">
+                          <thead>
+                            <tr>
+                              <th></th>
+                              <th>Nom(s)</th>
+                              <th>Prenom(s)</th>
+                              <th>Matière</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <!-- début affichage des étudiants -->
+                          {% for matiere_classe in matiere_classes %}
+                            <tr class="selectable-row" data-etudiant-email="{{ matiere_classe.id }}">
+                              <td><input class="form-check-input" type="checkbox" name="matiere_classe[]" value="{{ matiere_classe.id }}" id="matiere_classe{{ matiere_classe.id }}" data-etudiant-id="{{ matiere_classe.id }}"></td>
+                              <td class="nom">{{matiere_classe.professeur.nom}}</td>
+                              <td class="prenom">{{matiere_classe.professeur.prenom}}</td>
+                              <td class="email" style="display: none;">{{matiere_classe.professeur.email}}</td>
+                              <td class="contact" style="display: none;">{{matiere_classe.professeur.contact}}</td>
+                              <td class="matière_associée" style="display: none;">
+                                {% for matiere in matiere_classe.professeur.matière_associée.all %}
+                                    {{ matiere.nom_matiere }}
+                                    {% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                              </td>
+                              <td class="matière_enseigne">{{matiere_classe.matiere}}</td>
+                            </tr>
+                          {% endfor %}
+                          <!-- fin affichage des étudiants -->
+                          </tbody>
+                          <tfoot>
+                            <div  style="justify-content: space-between; display: flex;">
+                                <div>
+                                    <input type="hidden" name="submit_action" id="submitAction" value="">
+                                    <a href="{% url 'ajouter_prof_matiere' classe.id %}" id="ajouterBtn"><button type="button" class="btn btn-primary">Ajouter</button></a>
+                                    <button name="modifier_submit" type="submit" class="btn btn-warning" id="modifierBtn" style="display: none;">Modifier</button>
+                                    <button type="button" name="retirer_submit" onclick="demanderConfirmation()" class="btn btn-danger" id="retirerBtn" style="display: none;">Retirer</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-light"><i class="bi bi-printer"></i> Print</button>
+                                </div>
+                            </div>
+                          </tfoot>
+                        </table>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card end -->
+              </div>
+            </div>
+            <!-- Row end -->
+
+          </div>
+          <!-- Content wrapper end -->
+
+          <!-- App Footer start -->
+          <div class="app-footer">
+            <span>© Bootstrap Gallery 2024</span>
+          </div>
+          <!-- App footer end -->
+
+        </div>
+        <!-- Content wrapper scroll end -->
+
+        <!-- Modal View Row -->
+        <div class="modal modal-dark fade" id="viewRow" tabindex="-1" aria-labelledby="viewRowLabel"
+          style="display: none;" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="viewRowLabel">View Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <!-- Row start -->
+                <div class="row">
+                  <div class="col-lg-4 col-sm-6 col-6">
+                    <div class="customer-card">
+                      <h6>Nom</h6>
+                      <h5 class="nom-modal"></h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-6">
+                    <div class="customer-card">
+                      <h6>Prenom</h6>
+                      <h5 class="prenom-modal"></h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-6">
+                    <div class="customer-card">
+                      <h6>Email</h6>
+                      <h5 class="email-modal"></h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-6">
+                    <div class="customer-card">
+                      <h6>Contact</h6>
+                      <h5 class="contact-modal"></h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-6">
+                    <div class="customer-card">
+                      <h6>Matière Associée</h6>
+                      <h5 class="matière_associée-modal">2</h5>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-sm-6 col-6">
+                    <div class="customer-card">
+                      <h6>Matière Enseigne</h6>
+                      <h5 class="matière_enseigne-modal">21</h5>
+                    </div>
+                  </div>
+                </div>
+                <!-- Row end -->
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- *************
+				************ Main container end *************
+			************* -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/modernizr.js' %}"></script>
+  <script src="{% static 'assets/js/moment.js' %}"></script>
+
+  <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+  <!-- Overlay Scroll JS -->
+  <script src="{% static 'assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/overlay-scroll/custom-scrollbar.js' %}"></script>
+
+  <!-- Rating JS -->
+  <script src="{% static 'assets/vendor/rating/raty.js' %}"></script>
+  <script src="{% static 'assets/vendor/rating/raty-custom.js' %}"></script>
+
+  <!-- Apex Charts -->
+  <script src="{% static 'assets/vendor/apex/apexcharts.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/apex/custom/profile/visitors.js' %}"></script>
+
+  <!-- Main Js Required -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('.form-check-input');
+    
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                const checkedCheckboxes = document.querySelectorAll('.form-check-input:checked');
+                if (checkedCheckboxes.length > 0) {
+                    document.getElementById('retirerBtn').style.display = 'inline-block';
+                    document.getElementById('modifierBtn').style.display = 'inline-block';
+                    document.getElementById('ajouterBtn').style.display = 'none';
+                } else {
+                    document.getElementById('retirerBtn').style.display = 'none';
+                    document.getElementById('modifierBtn').style.display = 'none';
+                    document.getElementById('ajouterBtn').style.display = 'inline-block';
+                }
+            });
+        });
+    
+        document.getElementById('retirerBtn').addEventListener('click', function() {
+            document.getElementById('formRetirer').submit();
+        });
+    });
+    </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('.form-check-input');
+        const modifierBtn = document.getElementById('modifierBtn');
+    
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                const checkedCheckboxes = document.querySelectorAll('.form-check-input:checked');
+                if (checkedCheckboxes.length === 1) {
+                    modifierBtn.style.display = 'inline-block';
+                } else {
+                    modifierBtn.style.display = 'none';
+                }
+                updateRetirerBtnVisibility(checkedCheckboxes.length);
+            });
+        });
+    
+        function updateRetirerBtnVisibility(numChecked) {
+            const retirerBtn = document.getElementById('retirerBtn');
+            if (numChecked > 0) {
+                retirerBtn.style.display = 'inline-block';
+            } else {
+                retirerBtn.style.display = 'none';
+            }
+        }
+    
+        document.getElementById('retirerBtn').addEventListener('click', function() {
+            document.getElementById('formRetirer').submit();
+        });
+    });
+    </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sélectionner toutes les lignes du tableau avec la classe "selectable-row"
+        var rows = document.querySelectorAll('.selectable-row');
+        
+        // Ajouter un gestionnaire d'événements de double clic à chaque ligne
+        rows.forEach(function(row) {
+            row.addEventListener('dblclick', function() {
+              // Récupérer les informations à partir de la ligne double-cliquée
+              var nom = row.querySelector('.nom').textContent;
+              var prenom = row.querySelector('.prenom').textContent;
+              var email = row.querySelector('.email').textContent;
+              var contact = row.querySelector('.contact').textContent;
+              var matière_associée = row.querySelector('.matière_associée').textContent;
+              var matière_enseigne = row.querySelector('.matière_enseigne').textContent;
+              
+              // Remplir la modale avec les informations récupérées
+              var modal = document.getElementById('viewRow');
+              modal.querySelector('.nom-modal').textContent = nom;
+              modal.querySelector('.prenom-modal').textContent = prenom;
+              modal.querySelector('.email-modal').textContent = email;
+              modal.querySelector('.contact-modal').textContent = contact;
+              modal.querySelector('.matière_associée-modal').textContent = matière_associée;
+              modal.querySelector('.matière_enseigne-modal').textContent = matière_enseigne;
+              // Afficher la modale
+              var modal = document.getElementById('viewRow');
+              var modalInstance = new bootstrap.Modal(modal);
+              modalInstance.show();
+            });
+        });
+    });
+  </script>
+
+  <script>
+    function demanderConfirmation() {
+        if (confirm("Êtes-vous sûr de vouloir retirer cet élément ?")) {
+            submitForm('retirer_submit');
+        }
+    }
+
+    function submitForm(action) {
+        document.getElementById('submitAction').value = action;
+        document.getElementById('myForm').submit();
+    }
+  </script>
+  </body>
+
+
+<!-- Mirrored from www.bootstrapget.com/demos/templatemonster/arise-admin-dashboard/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Mar 2024 10:19:07 GMT -->
+</html>

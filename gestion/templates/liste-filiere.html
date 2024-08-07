@@ -1,0 +1,360 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from www.bootstrapget.com/demos/templatemonster/arise-admin-dashboard/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Mar 2024 10:19:05 GMT -->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Meta -->
+    <meta name="description" content="Best MISUKLU">
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="canonical" href="https://www.bootstrap.gallery/">
+    <meta property="og:url" content="https://www.bootstrap.gallery/">
+    <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+    <meta property="og:description" content="Marketplace for MISUKLU">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.svg' %}">
+
+    <!-- Title -->
+    <title>MISUKLU</title>
+
+
+    <!-- *************
+			************ Common Css Files *************
+		************ -->
+    <!-- Animated css -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+    <!-- Bootstrap font icons css -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/bootstrap/bootstrap-icons.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'assets/css/main.min.css' %}">
+
+
+    <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+    <!-- Scrollbar CSS -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/overlay-scroll/OverlayScrollbars.min.css' %}">
+
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/dataTables.bs5.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/vendor/datatables/dataTables.bs5-custom.css' %}" />
+
+</head>
+
+<body>
+
+    <!-- Loading wrapper start -->
+    <!-- <div id="loading-wrapper">
+			<div class="spinner">
+                <div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+				<div class="line4"></div>
+				<div class="line5"></div>
+				<div class="line6"></div>
+            </div>
+		</div> -->
+    <!-- Loading wrapper end -->
+
+    <!-- Page wrapper start -->
+    <div class="page-wrapper">
+
+        <!-- Sidebar wrapper start -->
+        <nav class="sidebar-wrapper">
+
+            <!-- Sidebar brand starts -->
+            <div class="sidebar-brand">
+                <a href="{% url 'dashboards-directeur-des-etudes' %}" class="logo">
+                    <img src="{% static 'assets/images/logo.svg' %}" alt="Admin Dashboards" />
+                </a>
+            </div>
+            <!-- Sidebar brand starts -->
+
+            <!-- Sidebar menu starts -->
+            <div class="sidebar-menu">
+                <div class="sidebarMenuScroll">
+                    <ul>
+                        <li>
+                            <a href="{% url 'dashboards-directeur-des-etudes' %}">
+                                <i class="bi bi-house"></i>
+                                <span class="menu-text">Home</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-dropdown active">
+                            <a href="#">
+                                <i class="bi bi-handbag"></i>
+                                <span class="menu-text">Filière</span>
+                            </a>
+                            <div class="sidebar-submenu ">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'creation_filiere' %}">Création</a>
+                                    </li>
+                                    <li class="active-page-link">
+                                        <a href="{% url 'liste_filiere' %}">Liste des Filières</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="bi bi-gem"></i>
+                                <span class="menu-text">Niveau</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'creation_niveau' %}">Création</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'liste_niveau' %}">Liste des niveaux</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="bi bi-collection"></i>
+                                <span class="menu-text">Classe</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'creation_classe' %}">Création</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'liste_classe' %}">Liste des classes</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="bi bi-collection"></i>
+                                <span class="menu-text">Etudiants</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'creation-etudiant' %}">Creation</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'liste_etudiant' %}">Liste des Etudiants</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="bi bi-collection"></i>
+                                <span class="menu-text">Matière</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'creation_matiere' %}">Creation</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'list_matiere' %}">Liste des Matières</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="bi bi-collection"></i>
+                                <span class="menu-text">Enregistrement</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'creation_compt' %}">Comptable</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'creation_prof' %}">Professeur</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Sidebar menu ends -->
+            <!-- Sidebar menu ends -->
+
+        </nav>
+        <!-- Sidebar wrapper end -->
+
+        <!-- *************
+				************ Main container start *************
+			************* -->
+        <div class="main-container">
+
+            <!-- Page header starts -->
+            <div class="page-header">
+
+                <!-- Toggle sidebar start -->
+                <div class="toggle-sidebar" id="toggle-sidebar"><i class="bi bi-list"></i></div>
+                <!-- Toggle sidebar end -->
+
+                <!-- Logo sm starts -->
+                <a href="{% url 'dashboards-directeur-des-etudes' %}" class="d-lg-none d-md-block">
+                    <img src="{% static 'assets/images/logo.svg' %}" class="logo-sm" alt="Bootstrap Gallery">
+                </a>
+                <!-- Logo sm ends -->
+
+                <!-- Breadcrumb start -->
+                <ol class="breadcrumb d-lg-flex d-none">
+                    <li class="breadcrumb-item">
+                        <i class="bi bi-house"></i>
+                        <a href="{% url 'dashboards-directeur-des-etudes' %}">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">Gestion</li>
+                    <li class="breadcrumb-item breadcrumb-active" aria-current="page">Liste des filières</li>
+                </ol>
+                <!-- Breadcrumb end -->
+
+                <!-- Header actions ccontainer start -->
+                <div class="header-actions-container">
+
+                    <!-- Search container start -->
+                    <div class="search-container d-lg-block d-none">
+
+                    </div>
+                    <!-- Search container end -->
+
+                    <!-- Header actions start -->
+                    <ul class="header-actions">
+
+                        <li class="dropdown">
+                            <a href="#" id="userSettings" class="user-settings" data-toggle="dropdown"
+                                aria-haspopup="true">
+                                <span class="user-name d-none d-md-block">{{user.first_name}}</span>
+                                <span class="avatar">
+                                    <img src="{% static 'assets/images/user.png' %}" alt="Admin Templates">
+                                    <span class="status online"></span>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+                                <div class="header-profile-actions">
+                  <a href="{% url 'settings' %}">Settings</a>
+                                    <a href="login.html">Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- Header actions end -->
+
+                </div>
+                <!-- Header actions ccontainer end -->
+
+            </div>
+            <!-- Page header ends -->
+
+            <!-- Content wrapper scroll start -->
+            <div class="content-wrapper-scroll">
+
+                <!-- Content wrapper start -->
+                <div class="content-wrapper">
+
+                    <!-- Row start -->
+                    <div class="row">
+                        <div class="col-sm-12 col-12">
+
+                            <!-- Card start -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">Liste filiere</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="apiCallbacks" class="table custom-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nom</th>
+                                                    <th>description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- début affichage des filiere -->
+                                                {% for fil in filieres %}
+                                                <tr>
+                                                    <td>{{fil.nom_filiere}}</td>
+                                                    <td>{{fil.description}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                                <!-- fin affichage des filieres -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card end -->
+                        </div>
+                    </div>
+                    <!-- Row end -->
+
+                </div>
+                <!-- Content wrapper end -->
+
+                <!-- App Footer start -->
+                <div class="app-footer">
+                    <span>© Bootstrap Gallery 2024</span>
+                </div>
+                <!-- App footer end -->
+
+            </div>
+            <!-- Content wrapper scroll end -->
+
+        </div>
+        <!-- *************
+				************ Main container end *************
+			************* -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'assets/js/moment.js' %}"></script>
+
+    <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+    <!-- Overlay Scroll JS -->
+    <script src="{% static 'assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/overlay-scroll/custom-scrollbar.js' %}"></script>
+
+    <!-- Rating JS -->
+    <script src="{% static 'assets/vendor/rating/raty.js' %}"></script>
+    <script src="{% static 'assets/vendor/rating/raty-custom.js' %}"></script>
+
+    <!-- Apex Charts -->
+    <script src="{% static 'assets/vendor/apex/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/apex/custom/profile/visitors.js' %}"></script>
+
+    <!-- Main Js Required -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from www.bootstrapget.com/demos/templatemonster/arise-admin-dashboard/data-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Mar 2024 10:19:07 GMT -->
+
+</html>

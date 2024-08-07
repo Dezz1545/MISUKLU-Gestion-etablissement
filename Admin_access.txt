@@ -1,0 +1,23 @@
+profil: admin
+username : admin
+email: nguessanlandry216@gmail.com
+password : Escalibure1@
+
+
+
+profil: directeur des etudes
+email: Cheickhamed2780@gmail.com
+password : etude1234
+
+
+profil: professeur
+email: yves@email.com
+password : profe1234
+
+profil: etudiant
+email: papacava@gmail.com
+password : papa@123
+
+profil: comptable
+email: landry@email.com
+password: compte1234

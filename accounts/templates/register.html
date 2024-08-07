@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+   
+{% endblock title %}
+{% block content %}
+
+<style>
+  .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Assure que le contenu est centré verticalement sur toute la hauteur de la page */
+  }
+</style>
+
+<div class="container">
+  <div class="row center-content">
+    <div class="col-sm-6">
+      <div class="card"> 
+        <div class="card-header text-center"> 
+          <div class="card-title">User Profile</div>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
